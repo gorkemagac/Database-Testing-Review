@@ -1,0 +1,26 @@
+select * from employees;
+select FIRST_NAME,PHONE_NUMBER,SALARY from EMPLOYEES;
+select distinct JOB_ID from EMPLOYEES;
+select FIRST_NAME,LAST_NAME,JOB_ID from EMPLOYEES where JOB_ID='ST_CLERK';
+select * from locations where COUNTRY_ID in ('JP','UK','CA');
+select * from LOCATIONS where COUNTRY_ID not in('China','United States of America');
+select JOB_TITLE, MIN_SALARY from jobs  where min_salary between 4000 and 9000;
+select * from LOCATIONS where STATE_PROVINCE is null;
+select * from DEPARTMENTS where MANAGER_ID is not null;
+select JOB_ID, HIRE_DATE from EMPLOYEES where HIRE_DATE like '%2001';
+select first_name,JOB_ID from employees where job_id like '%CLERK';
+select EMAIL from EMPLOYEES where email like ('___E__');
+select count(MANAGER_ID) from DEPARTMENTS;
+select DEPARTMENT_ID, max(SALARY) from employees group by DEPARTMENT_ID order by max(SALARY) desc;
+select job_id, min(salary), max(salary), avg(salary)from EMPLOYEES group by job_id;
+select count(*), DEPARTMENT_ID from EMPLOYEES group by DEPARTMENT_ID having count(*)>10;
+select JOB_ID, avg(COMMISSION_PCT) from EMPLOYEES group by JOB_ID having avg(COMMISSION_PCT)>0.20;
+select jobs.JOB_ID,START_DATE,MAX_SALARY from JOBS inner join JOB_HISTORY on JOBS.JOB_ID = JOB_HISTORY.JOB_ID;
+select jobs.JOB_ID,START_DATE,MAX_SALARY from JOBS left join JOB_HISTORY on JOBS.JOB_ID = JOB_HISTORY.JOB_ID;
+select jobs.JOB_ID,START_DATE,MAX_SALARY from JOBS right join JOB_HISTORY on JOBS.JOB_ID = JOB_HISTORY.JOB_ID;
+select jobs.JOB_ID,START_DATE,MAX_SALARY from JOBS full outer join JOB_HISTORY on JOBS.JOB_ID = JOB_HISTORY.JOB_ID;
+select FIRST_NAME, DEPARTMENT_NAME from EMPLOYEES inner join DEPARTMENTS on EMPLOYEES.DEPARTMENT_ID = DEPARTMENTS.DEPARTMENT_ID;
+select JOB_ID,DEPARTMENTS.MANAGER_ID from EMPLOYEES inner join DEPARTMENTS on EMPLOYEES.DEPARTMENT_ID = DEPARTMENTS.DEPARTMENT_ID;
+select DEPARTMENT_NAME, END_DATE from DEPARTMENTS left join JOB_HISTORY on DEPARTMENTS.DEPARTMENT_ID = JOB_HISTORY.DEPARTMENT_ID where END_DATE is not null;
+select DEPARTMENT_NAME, CITY from DEPARTMENTS join LOCATIONS on DEPARTMENTS.LOCATION_ID = LOCATIONS.LOCATION_ID;
+
